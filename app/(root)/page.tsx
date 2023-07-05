@@ -1,16 +1,19 @@
 "use client";
-import { Modal } from "@/components/ui/modal";
-import { UserButton } from "@clerk/nextjs";
+import React from "react";
+
+import { useStoreModal } from "@/hooks/use-store-modal";
 
 const SetupPage = () => {
-  return (
-    <div className="p-4">
-      {/* <UserButton afterSignOutUrl="/" /> */}
-      <Modal isOpen onClose={() => {}} title="Test" description="Test desc">
-        children
-      </Modal>
-    </div>
-  );
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
+
+  return <div className="p-4">Root page</div>;
 };
 
 export default SetupPage;
