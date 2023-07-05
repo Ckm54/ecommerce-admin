@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const Home = () => {
+const SetupPage = () => {
   return (
     <div className="p-4">
       <Button size={"default"} variant={"outline"}>
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SetupPage;
