@@ -1,3 +1,5 @@
+"use client";
+
 import { CheckCheck, Copy, Server } from "lucide-react";
 import { toast } from "react-hot-toast";
 
