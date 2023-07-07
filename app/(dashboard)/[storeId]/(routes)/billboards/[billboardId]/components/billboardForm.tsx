@@ -25,8 +25,14 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 const formSchema = z.object({
-  label: z.string().min(3),
-  imageUrl: z.string().min(1),
+  label: z
+    .string()
+    .trim()
+    .min(3, { message: "Label should be at least 3 characters" }),
+  imageUrl: z
+    .string()
+    .trim()
+    .min(1, { message: "Please select an image to upload" }),
 });
 
 type BillboardFormValues = z.infer<typeof formSchema>;

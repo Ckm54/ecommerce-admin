@@ -33,6 +33,7 @@ import { SelectValue } from "@radix-ui/react-select";
 const formSchema = z.object({
   name: z
     .string({ required_error: "Name is required" })
+    .trim()
     .min(1, { message: "Name should be at least 3 characters" }),
   billboardId: z
     .string()
