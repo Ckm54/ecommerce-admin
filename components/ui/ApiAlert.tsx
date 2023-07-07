@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 
 interface ApiAlertProps {
-  title: "GET" | "POST" | "PATCH" | "DELETE";
+  title: "GET" | "POST" | "PATCH" | "DELETE" | "NEXT_PUBLIC_API_URL";
   description: string;
   variant: "public" | "admin";
 }
