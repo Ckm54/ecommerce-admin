@@ -43,7 +43,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onCopy = (id: string) => {
     setCopied(true);
     navigator.clipboard.writeText(id);
-    toast.success("Billboard id route copied to clipboard");
+    toast.success("Billboard id copied to clipboard");
   };
 
   const onDelete = async () => {
@@ -80,14 +80,6 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-          <DropdownMenuItem
-            onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
-            }
-          >
-            <Edit className="w-4 h-4 mr-2" />
-            Update
-          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             {copied ? (
               <CheckCheck className="w-4 h-4 mr-2" />
@@ -95,6 +87,14 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
               <Copy className="w-4 h-4 mr-2" />
             )}
             Copy ID
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() =>
+              router.push(`/${params.storeId}/billboards/${data.id}`)
+            }
+          >
+            <Edit className="w-4 h-4 mr-2" />
+            Update
           </DropdownMenuItem>
           <DropdownMenuItem color="red" onClick={() => setOpen(true)}>
             <Trash className="w-4 h-4 mr-2" />
