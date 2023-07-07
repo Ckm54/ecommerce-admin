@@ -15,22 +15,27 @@ export const MainNav = ({
     {
       href: `/${params.storeId}`,
       label: "Dashboard",
-      active: pathname === `/${params.storeId}`,
+      active: pathname.includes(`/${params.storeId}`),
     },
     {
       href: `/${params.storeId}/billboards`,
       label: "Billboards",
-      active: pathname === `/${params.storeId}/billboards`,
+      active: pathname.includes(`/${params.storeId}/billboards`),
     },
     {
       href: `/${params.storeId}/categories`,
       label: "Categories",
-      active: pathname === `/${params.storeId}/categories`,
+      active: pathname.includes(`/${params.storeId}/categories`),
+    },
+    {
+      href: `/${params.storeId}/sizes`,
+      label: "Sizes",
+      active: pathname.includes(`/${params.storeId}/sizes`),
     },
     {
       href: `/${params.storeId}/settings`,
       label: "Settings",
-      active: pathname === `/${params.storeId}/settings`,
+      active: pathname.includes(`/${params.storeId}/settings`),
     },
   ];
   return (
