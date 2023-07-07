@@ -1,9 +1,9 @@
-// POST - create a new size under the store
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 import prismaDb from "@/lib/prismaDb";
 
+// POST - create a new size under the store
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }

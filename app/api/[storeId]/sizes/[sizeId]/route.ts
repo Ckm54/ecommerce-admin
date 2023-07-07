@@ -26,7 +26,7 @@ export async function PATCH(
     }
 
     if (!params.storeId) {
-      return new NextResponse("storeId is required", { status: 400 });
+      return new NextResponse("Store Id is required", { status: 400 });
     }
 
     if (!params.sizeId) {
