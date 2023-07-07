@@ -33,8 +33,11 @@ import { SelectValue } from "@radix-ui/react-select";
 const formSchema = z.object({
   name: z
     .string({ required_error: "Name is required" })
-    .min(3, { message: "Name should be at least 3 characters" }),
-  billboardId: z.string({ required_error: "Please select a billboard" }),
+    .min(1, { message: "Name should be at least 3 characters" }),
+  billboardId: z
+    .string()
+    .trim()
+    .min(1, { message: "Please select a billboard" }),
 });
 
 type CategoryFormValues = z.infer<typeof formSchema>;
@@ -61,11 +64,10 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
-    // ,
-    // defaultValues: initialData || {
-    //   name: "",
-    //   billboardId: "",
-    // },
+    defaultValues: initialData || {
+      name: "",
+      billboardId: "",
+    },
   });
 
   const onSubmit = async (data: CategoryFormValues) => {
@@ -167,8 +169,8 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
-                    // value={field.value}
-                    // defaultValue={field.value}
+                    value={initialData ? field.value : undefined}
+                    defaultValue={initialData ? field.value : undefined}
                   >
                     <FormControl>
                       <SelectTrigger>
