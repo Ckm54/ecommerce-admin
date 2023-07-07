@@ -53,7 +53,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 <Trash className="h-4 w-4" />
               </Button>
             </div>
-            <Image fill className="object-cover" alt="image" src={url} />
+            <Image
+              fill
+              className="object-cover"
+              alt="image"
+              src={url}
+              priority={true}
+              // placeholder="blur"
+              // blurDataURL={"/img/logo.png"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
         ))}
       </div>
