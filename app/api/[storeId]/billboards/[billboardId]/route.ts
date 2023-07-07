@@ -84,6 +84,18 @@ export async function DELETE(
       return new NextResponse("BillboardId is required", { status: 400 });
     }
 
+    // User should own the store associated with this billboard
+    const storeByCurrentUser = await prismaDb.store.findFirst({
+      where: {
+        id: params.storeId,
+        userId,
+      },
+    });
+
+    if (!storeByCurrentUser) {
+      return new NextResponse("Unauthorized", { status: 403 });
+    }
+
     const billboard = await prismaDb.billboard.deleteMany({
       where: {
         id: params.billboardId,
