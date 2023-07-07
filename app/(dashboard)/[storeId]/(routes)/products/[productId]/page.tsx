@@ -24,8 +24,6 @@ const ProductPage = async ({
         })
       : null;
 
-  console.log({ product });
-
   // fetch categories
   const categories = await prismaDb.category.findMany({
     where: {
