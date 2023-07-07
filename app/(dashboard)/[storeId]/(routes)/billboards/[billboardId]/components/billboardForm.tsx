@@ -164,17 +164,19 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className="ml-auto"
-            type="button"
-            onClick={() => router.push(`/${params.storeId}/billboards`)}
-          >
-            Cancel
-          </Button>
-          <Button disabled={loading} className="ml-auto" type="submit">
-            {action}
-          </Button>
+          <div className="flex ml-auto space-x-4">
+            <Button
+              disabled={loading}
+              variant={"outline"}
+              type="button"
+              onClick={() => router.push(`/${params.storeId}/billboards`)}
+            >
+              Cancel
+            </Button>
+            <Button disabled={loading} type="submit">
+              {action}
+            </Button>
+          </div>
         </form>
       </Form>
       <Separator />
