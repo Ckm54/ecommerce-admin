@@ -2,8 +2,14 @@ import React from "react";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import MainNav from "@/components/MainNav";
+import getCategories from "@/actions/getCategories";
 
-const Navbar = () => {
+// Do not cache page contents
+export const revalidate = 0;
+
+const Navbar = async () => {
+  const categories = await getCategories();
+
   return (
     <nav className="border-b">
       <Container>
@@ -12,7 +18,7 @@ const Navbar = () => {
             <p className="font-bold text-xl">STORE</p>
           </Link>
 
-          <MainNav data={[]} />
+          <MainNav navLinks={categories} />
         </div>
       </Container>
     </nav>
