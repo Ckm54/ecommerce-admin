@@ -15,7 +15,7 @@ export const MainNav = ({
     {
       href: `/${params.storeId}`,
       label: "Dashboard",
-      active: pathname.includes(`/${params.storeId}`),
+      active: pathname === `/${params.storeId}`,
     },
     {
       href: `/${params.storeId}/billboards`,
