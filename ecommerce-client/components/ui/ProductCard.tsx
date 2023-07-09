@@ -7,12 +7,19 @@ import { ProductType } from "@/types";
 import IconButton from "@/components/ui/IconButton";
 import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "@/components/ui/Currency";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   product: ProductType;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const router = useRouter();
+
+  const handleViewProductDetails = () => {
+    router.push(`/products/${product.id}`);
+  };
+
   return (
     <div className="bg-white group cursor-pointer rounded-xl borer space-y-4">
       {/* images and actions */}
@@ -28,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex gap-x-6 justify-center">
             <IconButton
               icon={<Expand size={20} className="text-gray-600" />}
-              onClick={() => {}}
+              onClick={handleViewProductDetails}
             />
             <IconButton
               icon={<ShoppingCart size={20} className="text-gray-600" />}
