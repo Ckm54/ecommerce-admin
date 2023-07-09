@@ -1,9 +1,7 @@
-// Fetch related products -- within same category excluding current product
-
 import prismaDb from "@/lib/prismaDb";
 import { NextResponse } from "next/server";
 
-// GET -- get a single product
+// GET -- Fetch related products -- within same category excluding current product
 export async function GET(
   req: Request,
   { params }: { params: { productId: string; storeId: string } }
