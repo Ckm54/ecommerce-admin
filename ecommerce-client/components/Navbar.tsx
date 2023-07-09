@@ -3,7 +3,9 @@ import Container from "@/components/ui/Container";
 import Link from "next/link";
 import MainNav from "@/components/MainNav";
 import getCategories from "@/actions/getCategories";
+import NavbarActions from "@/components/NavbarActions";
 
+export const dynamic = "force-dynamic";
 // Do not cache page contents
 export const revalidate = 0;
 
@@ -19,6 +21,7 @@ const Navbar = async () => {
           </Link>
 
           <MainNav navLinks={categories} />
+          <NavbarActions />
         </div>
       </Container>
     </nav>
