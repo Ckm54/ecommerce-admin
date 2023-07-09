@@ -17,12 +17,14 @@ export interface ProductType {
   price: number;
   size: Size;
   color: Color;
-  images: Image[];
+  images: ImageType[];
+  description: string;
+  quantity: number;
 }
 
 export interface Color extends Size {}
 
-export interface Image {
+export interface ImageType {
   id: string;
   url: string;
 }
