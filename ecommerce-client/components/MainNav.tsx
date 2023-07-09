@@ -12,9 +12,9 @@ const MainNav: React.FC<MainNavProps> = ({ navLinks }) => {
   const pathname = usePathname();
 
   const routes = navLinks.map((link) => ({
-    href: `/category/${link.id}`,
+    href: `/categories/${link.id}`,
     label: link.name,
-    active: pathname === `/category/${link.id}`,
+    active: pathname === `/categories/${link.id}`,
   }));
   return (
     <div className="mx-6 flex items-center space-x-4 lg:space-x-6">
