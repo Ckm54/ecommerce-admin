@@ -7,10 +7,15 @@ export async function GET(
   { params }: { params: { productId: string; storeId: string } }
 ) {
   const { searchParams } = new URL(req.url);
-  const categoryId = searchParams.get("categoryId") || undefined;
+  const categoryId = searchParams.get("categoryId");
+
   try {
     if (!params.productId) {
       return new NextResponse("ProductId is required", { status: 400 });
+    }
+
+    if (!categoryId) {
+      return new NextResponse("categoryId is required", { status: 400 });
     }
 
     const products = await prismaDb.product.findMany({
