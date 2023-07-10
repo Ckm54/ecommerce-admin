@@ -3,7 +3,10 @@ import getColors from "@/actions/getColors";
 import getProducts from "@/actions/getProducts";
 import getSizes from "@/actions/getSizes";
 import Billboard from "@/components/Billboard";
+import Filter from "@/components/Filter";
 import Container from "@/components/ui/Container";
+import NoResults from "@/components/ui/NoResults";
+import ProductCard from "@/components/ui/ProductCard";
 
 // export const revalidate = 0;
 
@@ -43,7 +46,22 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             {/* Add mobile filters */}
 
-            <div className="hidden lg:block">{/* <Filter */}</div>
+            <div className="hidden lg:block">
+              <Filter valueKey="sizeId" name="Sizes" filters={sizes} />
+              <Filter valueKey="colorId" name="Colors" filters={colors} />
+            </div>
+
+            <div className="mt-6 lg:col-span-4 lg:mt-0">
+              {products.length === 0 ? (
+                <NoResults />
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Container>
