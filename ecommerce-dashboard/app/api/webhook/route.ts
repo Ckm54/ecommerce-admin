@@ -52,16 +52,40 @@ export async function POST(req: Request) {
 
     const productIds = order.orderItems.map((item) => item.productId);
 
-    await prismaDb.product.updateMany({
-      where: {
-        id: {
-          in: [...productIds],
+    await prismaDb.$transaction(async (prisma) => {
+      // step1: Decrement quantity by 1 for all products
+      await prismaDb.product.updateMany({
+        where: {
+          id: {
+            in: [...productIds],
+          },
         },
-      },
-      data: {
-        isArchived: true,
-        quantity: { decrement: 1 },
-      },
+        data: {
+          quantity: { decrement: 1 },
+        },
+      });
+
+      // Fetch the products with updated quantity === 0
+      const updatedProducts = await prisma.product.findMany({
+        where: {
+          id: {
+            in: [...productIds],
+          },
+          quantity: 0, // Check if the updated quantity is 0
+        },
+      });
+
+      // Set isArchived to true for products with quantity 0
+      await prisma.product.updateMany({
+        where: {
+          id: {
+            in: updatedProducts.map((product) => product.id),
+          },
+        },
+        data: {
+          isArchived: true,
+        },
+      });
     });
   }
 
