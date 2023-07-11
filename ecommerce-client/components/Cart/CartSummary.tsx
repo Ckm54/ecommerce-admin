@@ -12,6 +12,7 @@ const CartSummary = () => {
   const searchParams = useSearchParams();
   const cartItems = useCart((state) => state.items);
   const clearCartItems = useCart((state) => state.clearCart);
+  const [processingPayment, setProcessingPayment] = React.useState(false);
 
   React.useEffect(() => {
     if (searchParams.get("success")) {
@@ -30,12 +31,16 @@ const CartSummary = () => {
   );
 
   const onCheckout = async () => {
+    setProcessingPayment(true);
+
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: cartItems.map((item) => item.id),
       }
     );
+
+    setProcessingPayment(false);
 
     window.location = response.data.url;
   };
@@ -51,7 +56,11 @@ const CartSummary = () => {
         </div>
       </div>
 
-      <Button className="w-full mt-6" onClick={onCheckout}>
+      <Button
+        className="w-full mt-6"
+        onClick={onCheckout}
+        disabled={processingPayment}
+      >
         Checkout
       </Button>
     </div>

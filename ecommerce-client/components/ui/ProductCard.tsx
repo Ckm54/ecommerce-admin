@@ -60,10 +60,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               icon={<Expand size={20} className="text-gray-600" />}
               onClick={handlePreviewProduct}
             />
-            <IconButton
-              icon={<ShoppingCart size={20} className="text-gray-600" />}
-              onClick={handleAddToCart}
-            />
+            {product.quantity > 0 && (
+              <IconButton
+                icon={<ShoppingCart size={20} className="text-gray-600" />}
+                onClick={handleAddToCart}
+              />
+            )}
           </div>
         </div>
       </div>
