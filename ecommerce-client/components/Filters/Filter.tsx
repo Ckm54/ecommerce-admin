@@ -2,11 +2,11 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 import { Color, Size } from "@/types";
 import queryString from "query-string";
 import Button from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
 
 interface FilterProps {
   filters: (Size | Color)[];
