@@ -9,7 +9,7 @@ import Container from "@/components/ui/Container";
 import NoResults from "@/components/ui/NoResults";
 import ProductCard from "@/components/ui/ProductCard";
 
-// export const revalidate = 0;
+export const revalidate = 0;
 
 interface CategoryPageProps {
   params: {
