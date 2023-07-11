@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ModalProvider from "@/providers/ModalProvider";
+import ToastProvider from "@/providers/ToastProvider";
 
 const fontInter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${fontInter.className}, bg-neutral-100`}>
         <ModalProvider />
+        <ToastProvider />
         <Navbar />
         {children}
         <Footer />

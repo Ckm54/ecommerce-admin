@@ -4,9 +4,11 @@ import React from "react";
 
 import Button from "@/components/ui/Button";
 import { ShoppingBag } from "lucide-react";
+import useCart from "@/hooks/useCart";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = React.useState(false);
+  const cart = useCart();
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -21,7 +23,7 @@ const NavbarActions = () => {
       <Button className="flex items-center rounded-full bg-black px-4 py-2">
         <ShoppingBag size={20} color="white" />
         {/* amount of items in cart */}
-        <span className="ml-2 font-medium text-white">0</span>
+        <span className="ml-2 font-medium text-white">{cart.items.length}</span>
       </Button>
     </div>
   );
