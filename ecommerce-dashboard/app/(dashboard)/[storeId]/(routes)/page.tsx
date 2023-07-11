@@ -1,6 +1,8 @@
+import { getGraphRevenue } from "@/actions/getGraphRevenue";
 import { getSalesCount } from "@/actions/getSalesCount";
 import { getStockCount } from "@/actions/getStockCount";
 import { getTotalRevenue } from "@/actions/getTotalRevenue";
+import Overview from "@/components/Overview";
 import DashboardCard from "@/components/ui/DashboardCard";
 import { Heading } from "@/components/ui/Heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,6 +28,8 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
 
   const stockCount = await getStockCount(params.storeId);
 
+  const graphRevenue = await getGraphRevenue(params.storeId);
+
   return (
     <div className="flex-col">
       <div className="flex-1 sace-y-4 p-8 pt-6">
@@ -50,6 +54,15 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
             icon={<Package className="h-4 w-4 text-muted-foreground" />}
             content={`${stockCount}`}
           />
+        </div>
+
+        <div className="col-span-4">
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <Overview data={graphRevenue} />
+          </CardContent>
         </div>
       </div>
       {/* <p>Active store {store?.name}</p> */}
