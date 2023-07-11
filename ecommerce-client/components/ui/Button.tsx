@@ -14,6 +14,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       text-white font-semibold hover:opacity-75 transition`,
           className
         )}
+        disabled={disabled}
       >
         {children}
       </button>

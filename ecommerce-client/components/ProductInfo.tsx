@@ -47,7 +47,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
         <Button
           className="flex items-center gap-x-2"
           onClick={() => addToCart(product)}
-          disabled={product.quantity <= 0}
+          disabled={product.quantity === 0}
         >
           Add to cart
           <ShoppingCart />
