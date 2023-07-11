@@ -5,9 +5,8 @@ import { getTotalRevenue } from "@/actions/getTotalRevenue";
 import Overview from "@/components/Overview";
 import DashboardCard from "@/components/ui/DashboardCard";
 import { Heading } from "@/components/ui/Heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import prismaDb from "@/lib/prismaDb";
 import { priceFormatter } from "@/lib/utils";
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
